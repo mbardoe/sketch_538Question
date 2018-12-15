@@ -4,3 +4,5 @@ The goal of this sketch was to model a number of particles that repel using an i
 This sketch allows the programmer to change the number of particles, and to change the friction factor.
 
 Information on the [538 question](https://fivethirtyeight.com/features/the-little-mathematically-determined-house-on-the-prairie/) that inspired this.
+
+You can download [Processing 3 here](https://processing.org/download/). 

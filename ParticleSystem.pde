@@ -7,6 +7,7 @@
 
 class ParticleSystem {
   ArrayList<Particle> particles;
+  float fric=0;
 
   ParticleSystem(PVector position) {
     particles = new ArrayList<Particle>();
@@ -24,6 +25,22 @@ class ParticleSystem {
     for (Particle p : particles) {
       p.display();
     }
+  }
+  
+  float getFric(){
+    return fric;
+  }
+  
+  void updateFriction(float amount){
+    fric+=amount;  
+    if (fric>0){
+      fric=0;
+    }
+    for (Particle p : this.particles) {
+      p.setFriction(fric);
+    }
+    //print(fric);
+    //print("\n");
   }
 
   void applyForce(PVector f) {

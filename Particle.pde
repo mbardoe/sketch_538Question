@@ -12,7 +12,7 @@ class Particle {
   float lifespan;
 
   float r = 6;
-
+  float fric=-0.05;
 
   Particle(float x, float y) {
     acceleration = new PVector();
@@ -50,6 +50,12 @@ class Particle {
     position.add(velocity);
     acceleration.mult(0);
     lifespan -= 0.5;
+  }
+  
+  void setFriction(float amount)
+  {
+    //print(fric);
+    fric=amount;
   }
 
   // Method to display

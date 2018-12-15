@@ -7,12 +7,11 @@
 
 class RepelParticle extends Particle {
 
-  float r = 100;
-
+  float LargestR = 100;
 
   RepelParticle(float x, float y, float radius) {
     super(x, y);
-    r=radius;
+    LargestR=radius;
   }
 
 
@@ -23,15 +22,18 @@ class RepelParticle extends Particle {
       //print("HERE");
       if (other != this) {
         PVector dir = PVector.sub(position, other.position);
-        dir.mult(.1*pow(other.position.dist(this.position), -2));
+        dir.mult(1*pow(other.position.dist(this.position), -2));
         //print(dir);
         applyForce(dir);
       }
     }
     PVector friction= new PVector(velocity.x, velocity.y);
-    applyForce(friction.mult(-.005));
+    friction.mult(fric);
+   // print(friction);
+    //print("\n");
+    applyForce(friction);
   }
-
+  
   // Method to update position
   void update() {
     //print(acceleration);
@@ -48,11 +50,12 @@ class RepelParticle extends Particle {
   void scaleposition() {
     PVector center= new PVector(width/2, height/2);
     PVector shift=position.sub(center);
-    shift.mult(r/shift.mag());
+    shift.mult(LargestR/shift.mag());
     position=center.add(shift);
   }
 
   boolean outside() {
-    return  position.dist(new PVector(width/2, height/2))>r;
+    //print("OUTSIDE");
+    return  position.dist(new PVector(width/2, height/2))>(LargestR);
   }
 }
